@@ -1,87 +1,84 @@
-Aracın Sinir Sistemi - CAN Bus Araştırması
-🎯 Görevin Amacı
-Bir Formula Student aracında onlarca sensör, motor sürücü ve kontrolcü bulunur. Bunların her biri için ayrı kablo çekersek, aracın ağırlığı 2 katına çıkar. İşte burada devreye CAN Bus girer.
 
-Bu görevde kod yazmayacaksınız. Bunun yerine, bir Gömülü Sistem Mühendisi gibi teknik doküman okuyacak, araştıracak ve öğrendiklerinizi teknik bir rapor haline getireceksiniz.
+🏎️ Aracın Sinir Sistemi: CAN Bus Araştırması
+🎯 Görevin Amacı
+Bir Formula Student aracında onlarca sensör, motor sürücü ve kontrolcü bulunur. Eğer her birim için ayrı kablo çekseydik, araç bakır yığınına döner ve ağırlığı iki katına çıkardı. İşte burada modern otomotivin mucizesi olan CAN Bus devreye giriyor.
+
+Bu görevde kod yazmayacaksın. Bir Gömülü Sistem Mühendisi gibi teknik doküman okuyacak, analiz edecek ve öğrendiklerini profesyonel bir rapor haline getireceksiniz.
 
 Motto: "Arabanın tekerleği dönsün istiyorsan, önce beyninin nasıl konuştuğunu öğrenmelisin."
 
-📚 Araştırma Soruları (Müfredat)
-Aşağıdaki başlıkları ve soruları detaylıca araştırın. Raporunuzda bu soruların teknik ve şematik cevapları olmalıdır.
+📚 Araştırma Müfredatı
+Raporunda aşağıdaki başlıkların teknik ve şematik cevapları yer almalıdır.
 
-Bölüm 1: Temeller ve Fiziksel Katman (Hardware)
-CAN Bus Nedir? Tarihçesi nedir? Neden otomotiv endüstrisi (Bosch) bunu geliştirdi?
+1. Temeller ve Fiziksel Katman (Hardware)
+CAN Bus Nedir? Tarihçesi ve Bosch'un bu protokolü geliştirme nedenleri.
 
 Diferansiyel Sinyal (Differential Signaling): CAN_H ve CAN_L nedir?
 
-Neden tek kablo yerine iki kablo (Twisted Pair) kullanılır?
+Twisted Pair (Bükümlü Tel): Neden tek kablo değil de birbirine dolanmış iki kablo kullanıyoruz? Bu yapı "Gürültüye" (Noise) karşı nasıl bir koruma kalkanı oluşturur?
 
-Bu yapı "Gürültüye" (Noise) karşı nasıl koruma sağlar? (Çizimle anlatın).
+Sonlandırma Direnci (Termination Resistor): * Hattın iki ucuna neden 120 Ohm direnç takılır?
 
-Sonlandırma Direnci (Termination Resistor):
+Takmazsak ne olur? (Yansıma/Reflection kavramını açıkla).
 
-Neden hattın iki ucuna 120 Ohm direnç takarız? Takmazsak ne olur? (Yansıma/Reflection kavramı).
+2. Protokol ve Veri Yapısı (Data Link Layer)
+Bir CAN mesaj paketinin (Frame) anatomisini incele:
 
-Bölüm 2: Protokol ve Veri Yapısı (Data Link Layer)
-CAN Frame (Veri Paketi) Yapısı: Bir CAN mesajı hangi parçalardan oluşur?
+SOF (Start of Frame): Mesajın başlangıcı.
 
-Start of Frame (SOF)
+Arbitration Field (ID): Standart (11-bit) ile Extended (29-bit) arasındaki fark.
 
-Arbitration Field (ID) - Standart (11-bit) vs Extended (29-bit) farkı nedir?
+Control Field (DLC): Bir pakette en fazla kaç byte veri taşınabilir?
 
-Control Field (DLC) - Bir pakette en fazla kaç byte veri taşınabilir?
+Data Field: Verinin asıl yükü.
 
-Data Field - Verinin kendisi.
+CRC Field: Hata kontrol mekanizması.
 
-CRC Field - Hata kontrolü nasıl yapılır?
+ACK Field: Mesajın yerine ulaştığını nasıl teyit ederiz?
 
-ACK Field - Mesajın ulaştığı nasıl anlaşılır?
+3. Trafik Yönetimi (Arbitration) 🚦
+CAN Bus'ta bir "Master" (Merkezi Yönetici) yoktur; bu bir Multi-Master sistemidir.
 
-Bölüm 3: Trafik Yönetimi (Arbitration) 🚦
-CAN Bus'ta "Merkezi Yönetici" (Master) yoktur. Herkes konuşabilir.
+Arbitrasyon (Önceliklendirme): İki modül (Örn: Motor ve Klima) aynı anda konuşmaya başlarsa hat nasıl karar verir?
 
-Arbitrasyon (Önceliklendirme): İki modül (Örn: Motor ve Fren) aynı anda konuşmaya başlarsa ne olur?
+ID Önceliği: Düşük ID (Örn: 0x100) mi yoksa yüksek ID (Örn: 0x500) mi daha baskındır? Neden?
 
-ID'nin Önemi: Düşük ID (Örn: 0x100) mi daha önceliklidir, Yüksek ID (Örn: 0x500) mi? Neden?
+Senaryo: Acil Fren Mesajı ile Klima Mesajı çakışırsa yarışı kim kazanır?
 
-Senaryo: Acil Fren Mesajı ile Klima Mesajı çakışırsa hangisi kazanır?
+4. Formula Student ve Pratik Uygulama
+Neden Ethernet veya USB değil de CAN Bus? (Hız, güvenlik ve mesafe kıyaslaması).
 
-Bölüm 4: Formula Student ve Pratik Uygulama
-Neden Ethernet veya USB değil de CAN Bus? (Hız, Güvenlik, Mesafe kıyaslaması).
+DBC Dosyası Nedir? Bir CAN veritabanı dosyası, yazılım ekibi için neden "Kutsal Kitap" niteliğindedir?
 
-DBC Dosyası Nedir? Bir CAN veritabanı (Database) dosyası yazılım ekibi için neden hayati önem taşır?
+📝 Teslim Formatı
 
-📝 Teslim Formatı (Markdown Raporu)
-Raporunuzu Word veya PDF olarak DEĞİL, GitHub'ın dili olan Markdown (.md) formatında hazırlayacaksınız.
+İstenen Dosya Yapısı:
+Başlık: Task-03: CAN Bus Araştırma Raporu - [Ad]-[Soyad]
 
-İstenen Rapor Yapısı:
+Görsellik: Anlattığınız konuları destekleyen şemalar ekleyin (Referans vererek veya kendiniz çizerek).
 
-Başlık: Task-03: CAN Bus Araştırma Raporu - [Ad Soyad]
-
-Görsellik: Anlattığınız konuları destekleyen şemalar ve görseller (İnternetten bulup referans vererek veya kendiniz çizerek) ekleyin.
-
-Kaynaklar: En altta yararlandığınız kaynakları (Vector, TI, Kvaser, Wikipedia vb.) listeleyin.
+Kaynaklar: En altta yararlandığınız teknik kaynakları (Vector, TI, Kvaser vb.) listeleyin.
 
 📤 Teslim Adımları (Git Workflow)
-Bu görevde de Git kaslarınızı çalıştırmaya devam ediyoruz.
+Git kaslarımızı çalıştırmaya devam ediyoruz:
 
-Branch: Kendi Fork'unuzda feature/can-bus-research adında yeni bir dal açın.
+Branch: Kendi Fork'unuzda feature/can-bus-research adında bir dal açın.
 
-Dosya: Submissions/Task-03-[Ad]-[Soyad]/ klasörünü oluşturun.
+Klasör: Submissions/Task-03-[Ad]-[Soyad]/ dizinini oluşturun.
+
+Dosya: Raporunuzu bu klasörün içine README.md adıyla kaydedin.
 
 Commit: docs: Task-03 CAN Bus arastirmasi tamamlandi
 
 Pull Request: Ana repoya PR açın.
 
 💡 İpuçları ve Kaynaklar
-Araştırmaya başlamak için şu anahtar kelimeleri kullanabilirsiniz:
+Araştırmaya başlarken şu anahtar kelimeler sana kapı açacaktır:
 
 Bosch CAN Specification 2.0
 
 Vector CAN Protocol Tutorial
 
-Texas Instruments CAN Physical Layer
+Texas Instruments CAN Physical Layer (SLLA337)
 
 Kvaser CAN Bus Explained
-
-Başarılar Ekip! Bu görevi tamamladığınızda, arabaların nasıl "konuştuğunu" öğrenmiş olacaksınız.
