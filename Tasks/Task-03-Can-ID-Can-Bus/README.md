@@ -1,5 +1,5 @@
-
 🏎️ Aracın Sinir Sistemi: CAN Bus Araştırması
+
 🎯 Görevin Amacı
 Bir Formula Student aracında onlarca sensör, motor sürücü ve kontrolcü bulunur. Eğer her birim için ayrı kablo çekseydik, araç bakır yığınına döner ve ağırlığı iki katına çıkardı. İşte burada modern otomotivin mucizesi olan CAN Bus devreye giriyor.
 
@@ -53,7 +53,7 @@ DBC Dosyası Nedir? Bir CAN veritabanı dosyası, yazılım ekibi için neden "K
 📝 Teslim Formatı
 
 İstenen Dosya Yapısı:
-Başlık: Task-03: CAN Bus Araştırma Raporu - [Ad]-[Soyad]
+Başlık: Task-03:XXXXXXXXXX - [Ad] - [Soyad]
 
 Görsellik: Anlattığınız konuları destekleyen şemalar ekleyin (Referans vererek veya kendiniz çizerek).
 
