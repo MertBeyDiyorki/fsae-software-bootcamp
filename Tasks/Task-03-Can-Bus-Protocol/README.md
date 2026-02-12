@@ -53,16 +53,16 @@ CAN Bus'ta bir "Master" (Merkezi Yönetici) yoktur; bu bir **Multi-Master** sist
 ## 📝 Teslim Formatı
 
 ### İstenen Dosya Yapısı
-* **Başlık:** `Task-03:görevadı-[Ad]-[Soyad]`
+* **Başlık:** `Task-03-[Ad]-[Soyad]`
 * **Görsellik:** Anlattığınız konuları destekleyen şemalar ekleyin (Referans vererek veya kendiniz çizerek).
 * **Kaynaklar:** En altta yararlandığınız teknik kaynakları (Vector, TI, Kvaser vb.) listeleyin.
 
 ### 📤 Teslim Adımları (Git Workflow)
-1.  **Branch:** Kendi Fork'unuzda `feature/can-bus-research` adında bir dal açın.
-2.  **Klasör:** `Submissions/Task-03-[Ad]-[Soyad]/` dizinizi oluşturun.
-3.  **Dosya:** Raporunuzu bu klasörün içine `README.md` adıyla kaydedin.
-4.  **Commit:** `docs: Task-03 CAN Bus arastirmasi tamamlandi`
-5.  **Pull Request:** Ana repoya PR açın.
+
+1.  **Klasör:** `Submissions/Task-03-[Ad]-[Soyad]/` dizinizi oluşturun.
+2.  **Dosya:** Raporunuzu bu klasörün içine `README.md` adıyla kaydedin.
+3.  **Commit:** `docs: Task-03 CAN Bus arastirmasi tamamlandi`
+4.  **Pull Request:** Ana repoya PR açın.
 
 ---
 
